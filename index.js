@@ -29,13 +29,13 @@ function updateClock() {
     if (hours >= 24) {
         hours = 0;
     }
-    document.getElementById("clock").innerText =
+    clockElement.innerText =
       `${formatNumber(hours)}:${formatNumber(minutes)}:${formatNumber(seconds)}`;
 }
 
 // handle start/Stop button click
 startStopBtn.addEventListener('click', () => {
-    if (isRunning) {
+    if (!isRunning) {  // ❌ use !isRunning to start
         timer = setInterval(updateClock, 1000); 
         isRunning = true;
         startStopBtn.innerText = "Stop";
@@ -44,4 +44,4 @@ startStopBtn.addEventListener('click', () => {
         isRunning = false;
         startStopBtn.innerText = "Start";
     }
-})
+});
