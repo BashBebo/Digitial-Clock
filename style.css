@@ -12,3 +12,16 @@ body {
     margin-bottom: 13rem;
 }
 
+#container {
+    display: inline-block;
+    position: relative;
+    align-self: center;
+    align-items: center;
+    width: 550px;
+    height: 300px;
+    border: 2px solid rgb(101, 101, 101);
+    background-color: rgb(113, 113, 113);
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    margin-top: -7rem;
+}
