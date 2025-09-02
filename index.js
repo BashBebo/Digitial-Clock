@@ -1,0 +1,37 @@
+// Digital Clock Script
+// Here in let and const are used to make the varabiles real and store the data in const
+let hours = 0;
+let minutes = 0;
+let seconds = 0;
+let timer = null;
+let isRunning = false;
+
+// these are getting the elemeents from the ids and creating a variable for them
+const clockElement = document.getElementById('clock');
+const startStopBtn = document.getElementById('StartStopBtn');
+
+
+// This function is used to fromat the time in two digits
+function formatnumber(num) {
+    return num < 10 ? "0" + num : num;
+}
+// This function is used to update the clock
+function updateClock() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+    }
+    if (minutes >= 60) {
+        minutes = 0;
+        hours++;
+    }
+    if (hours >= 24) {
+        hours = 0;
+    }
+}
+
+document.getElementById("clock").innerText =
+  `${formatNumber(hours)}:${formatNumber(minutes)}:${formatNumber(seconds)}`;
+
+setInterval(updateClock, 1000);
