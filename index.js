@@ -6,13 +6,13 @@ let seconds = 0;
 let timer = null;
 let isRunning = false;
 
-// these are getting the elemeents from the ids and creating a variable for them
+// these are getting the elements from the ids and creating a variable for them
 const clockElement = document.getElementById('clock');
 const startStopBtn = document.getElementById('StartStopBtn');
 
 
-// This function is used to fromat the time in two digits
-function formatnumber(num) {
+// This function is used to format the time in two digits
+function formatNumber(num) {
     return num < 10 ? "0" + num : num;
 }
 // This function is used to update the clock
@@ -29,9 +29,19 @@ function updateClock() {
     if (hours >= 24) {
         hours = 0;
     }
+    document.getElementById("clock").innerText =
+      `${formatNumber(hours)}:${formatNumber(minutes)}:${formatNumber(seconds)}`;
 }
 
-document.getElementById("clock").innerText =
-  `${formatNumber(hours)}:${formatNumber(minutes)}:${formatNumber(seconds)}`;
-
-setInterval(updateClock, 1000);
+// handle start/Stop button click
+startStopBtn.addEventListener('click', () => {
+    if (isRunning) {
+        timer = setInterval(updateClock, 1000); 
+        isRunning = true;
+        startStopBtn.innerText = "Stop";
+    } else {
+        clearInterval(timer);
+        isRunning = false;
+        startStopBtn.innerText = "Start";
+    }
+})
